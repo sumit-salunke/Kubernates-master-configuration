@@ -35,3 +35,21 @@
 
 #kubectl scale --current-replicas=4 --replicas=2  deployment/myautoscale
 
+#=======================================================================================================================
+
+#we can create 2 pods by using following command for apcahe image
+3kubectl run myautoscale --image=latest123/apache --port 80 --replicas=2 --labels=app=myautoscale 
+
+#======================
+# Regarding Failure and Recovery: 
+
+Kindly Note that, suppose one of your node fail or down, and running container on that node will not run on another Node, because there are dependencies for the container on that node.
+
+But you can do it by using kubectl scale.
+you need to change your current replicas setting .
+currenlty you have 2 replicas means 2 pods running on 2 different Minion.
+set 
+#kubectl scale --current-replicas=2 --replicas=1 deployment/myautoscale
+it will create your 1 pods. once done again create 2 pods, so that will create on your different Node that is running.
+
+
