@@ -1,0 +1,1 @@
+# Kubernates-master-configuration
